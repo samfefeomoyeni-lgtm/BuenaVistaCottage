@@ -1,21 +1,21 @@
-# 🏨 Buena Vista Cottage — Hotel Website
+# Buena Vista Cottage — Hotel Website
 
 A modern, full-stack hotel website for **Buena Vista Cottage**, a boutique Nigerian hotel. Built with React (Vite) on the frontend and Django on the backend, featuring immersive 3D animations, room booking, and a clean admin experience.
 
 ---
 
-## ✨ Features
+## Features
 
-- 🎬 **3D Animations & Transitions** — Smooth, immersive UI powered by Framer Motion
-- 🛏️ **Room Showcase** — Browse Suite, Apartment, and Basic room types with interactive cards
-- 📅 **Room Booking** — Real-time availability checking and booking submission
-- 🔐 **Authentication** — Guest login/signup and admin access
-- 📱 **Fully Responsive** — Optimized for mobile, tablet, and desktop
-- 🧑‍💼 **Admin Dashboard** — Manage rooms, bookings, and guests
+- **3D Animations & Transitions** — Smooth, immersive UI powered by Framer Motion
+- **Room Showcase** — Browse Suite, Apartment, and Basic room types with interactive cards
+- **Room Booking** — Real-time availability checking and booking submission
+- **Authentication** — Guest login/signup and admin access
+- **Fully Responsive** — Optimized for mobile, tablet, and desktop
+- **Admin Dashboard** — Manage rooms, bookings, and guests
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 | Tool | Purpose |
@@ -37,7 +37,7 @@ A modern, full-stack hotel website for **Buena Vista Cottage**, a boutique Niger
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 buena-vista-cottage/
@@ -79,7 +79,7 @@ buena-vista-cottage/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -138,7 +138,7 @@ API runs at **http://localhost:8000/api**
 
 ---
 
-## 🔗 API Endpoints
+## API Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -152,7 +152,7 @@ API runs at **http://localhost:8000/api**
 
 ---
 
-## 🖼️ Pages
+## Pages
 
 | Page | Route | Description |
 |------|-------|-------------|
@@ -165,7 +165,7 @@ API runs at **http://localhost:8000/api**
 
 ---
 
-## 🌍 Environment Variables
+## Environment Variables
 
 ### Frontend (`.env`)
 ```env
@@ -183,7 +183,7 @@ CORS_ALLOWED_ORIGINS=http://localhost:5173
 
 ---
 
-## 👥 Team
+## Team
 
 | Role | Name | Responsibility |
 |------|------|---------------|
@@ -192,6 +192,6 @@ CORS_ALLOWED_ORIGINS=http://localhost:5173
 
 ---
 
-## 📄 License
+## License
 
 This project is private and built for **Buena Vista Cottage**. All rights reserved.
