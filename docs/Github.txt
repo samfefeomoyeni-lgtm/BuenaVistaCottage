@@ -1,0 +1,164 @@
+========================================
+   GITHUB — HOW TO PUSH & PULL A REPO
+========================================
+
+This guide covers everything you need to push your code to GitHub
+and pull updates from your teammate (Victor).
+
+----------------------------------------
+ STEP 1: ONE-TIME SETUP (Do this once)
+----------------------------------------
+
+1. Install Git if you haven't:
+   https://git-scm.com/downloads
+
+2. Configure your identity:
+   git config --global user.name "Your Name"
+   git config --global user.email "you@example.com"
+
+3. Login to GitHub and create your repo (if not done already).
+
+
+----------------------------------------
+ STEP 2: CONNECT YOUR LOCAL PROJECT
+----------------------------------------
+
+If the repo already exists on GitHub and you're starting fresh:
+
+   git clone https://github.com/your-username/your-repo-name.git
+   cd your-repo-name
+
+If you already have a local project and want to link it to GitHub:
+
+   cd your-project-folder
+   git init
+   git remote add origin https://github.com/your-username/your-repo-name.git
+
+
+----------------------------------------
+ STEP 3: HOW TO PUSH (Send your code to GitHub)
+----------------------------------------
+
+Every time you make changes and want to save them to GitHub:
+
+   # 1. Check what files have changed
+   git status
+
+   # 2. Stage all your changes
+   git add .
+
+   # 3. Write a commit message describing what you did
+   git commit -m "Added hero section and navbar"
+
+   # 4. Push to GitHub
+   git push origin main
+
+   NOTE: Replace "main" with "master" if that's your branch name.
+         First time pushing? Use:
+         git push -u origin main
+         After that, just "git push" is enough.
+
+
+----------------------------------------
+ STEP 4: HOW TO PULL (Get Victor's latest changes)
+----------------------------------------
+
+Before you start working each day, always pull first
+so you have Victor's latest backend updates:
+
+   git pull origin main
+
+   This fetches and merges his changes into your local copy.
+
+
+----------------------------------------
+ STEP 5: WORKING ON SEPARATE BRANCHES (Recommended)
+----------------------------------------
+
+To avoid stepping on each other's code, use branches:
+
+   # Create and switch to your own branch
+   git checkout -b samuel/frontend
+
+   # Victor works on his own branch
+   git checkout -b victor/backend
+
+   # Push your branch to GitHub
+   git push origin samuel/frontend
+
+   # When your feature is ready, open a Pull Request on GitHub
+   # to merge your branch into main.
+
+
+----------------------------------------
+ STEP 6: HANDLING MERGE CONFLICTS
+----------------------------------------
+
+If you and Victor edited the same file, Git will flag a conflict.
+
+   # After pulling, if there's a conflict Git will tell you.
+   # Open the file — you'll see markers like this:
+
+   <<<<<<< HEAD
+   Your code here
+   =======
+   Victor's code here
+   >>>>>>> origin/main
+
+   # Fix the file manually (keep what's correct),
+   # then stage and commit:
+   git add .
+   git commit -m "Resolved merge conflict"
+
+
+----------------------------------------
+ QUICK REFERENCE CHEAT SHEET
+----------------------------------------
+
+   git status                   → See changed files
+   git add .                    → Stage all changes
+   git add filename.jsx         → Stage one file
+   git commit -m "message"      → Save a snapshot
+   git push origin main         → Send to GitHub
+   git pull origin main         → Get latest from GitHub
+   git checkout -b branch-name  → Create a new branch
+   git checkout main            → Switch back to main
+   git log --oneline            → See commit history
+   git diff                     → See what changed
+
+
+----------------------------------------
+ TIPS FOR WORKING WITH VICTOR
+----------------------------------------
+
+1. Always pull before you start coding each day.
+2. Commit often — small commits are easier to track.
+3. Write clear commit messages (not just "fixed stuff").
+4. Never push directly to main — use branches + Pull Requests.
+5. Add a .gitignore so you don't push node_modules or .env files.
+
+
+----------------------------------------
+ SAMPLE .gitignore FOR THIS PROJECT
+----------------------------------------
+
+   # Frontend
+   node_modules/
+   dist/
+   .env
+   .env.local
+
+   # Backend
+   __pycache__/
+   *.pyc
+   venv/
+   .env
+   db.sqlite3
+
+   # OS
+   .DS_Store
+   Thumbs.db
+
+========================================
+         YOU'RE GOOD TO GO!
+========================================

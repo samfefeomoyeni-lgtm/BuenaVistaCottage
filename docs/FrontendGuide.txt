@@ -1,0 +1,254 @@
+========================================
+   BUENA VISTA COTTAGE — FRONTEND PLAN
+   Developer: Samuel
+   Stack: React + Vite, Framer Motion, Axios
+========================================
+
+This file tracks what the frontend is building day by day,
+what each page does, and how it connects to the backend.
+
+----------------------------------------
+ WHAT THE FRONTEND IS RESPONSIBLE FOR
+----------------------------------------
+
+- All UI pages and components
+- 3D animations and transitions (Framer Motion)
+- Routing between pages (React Router DOM)
+- Sending and receiving data from Victor's Django API (Axios)
+- Handling user auth state (login/logout/session)
+- Making the site fully responsive (mobile + desktop)
+
+
+========================================
+ DAY-BY-DAY BUILD PLAN
+========================================
+
+----------------------------------------
+ DAY 1 — PROJECT SETUP
+----------------------------------------
+Tasks:
+  [ ] Scaffold project: npm create vite@latest frontend -- --template react
+  [ ] Install dependencies:
+        npm install react-router-dom framer-motion axios react-icons react-hot-toast
+  [ ] Set up folder structure (pages/, components/, services/, context/, hooks/)
+  [ ] Create src/services/api.js with Axios base config
+  [ ] Create .env with VITE_API_BASE_URL=http://localhost:8000/api
+  [ ] Set up App.jsx with React Router routes
+  [ ] Push initial setup to GitHub (branch: samuel/frontend)
+
+Deliverable: Project runs on localhost:5173 with blank pages wired up.
+
+
+----------------------------------------
+ DAY 2 — NAVBAR & FOOTER
+----------------------------------------
+Tasks:
+  [ ] Build Navbar.jsx
+        - Logo (Buena Vista Cottage branding)
+        - Nav links: Home, Rooms, About, Contact, Book Now
+        - Mobile hamburger menu
+        - Sticky on scroll
+  [ ] Build Footer.jsx
+        - Hotel name, address, contact info
+        - Social media links
+        - Quick links
+
+Deliverable: Navbar and Footer appear on every page.
+
+
+----------------------------------------
+ DAY 3 — HOME PAGE
+----------------------------------------
+Tasks:
+  [ ] Hero section
+        - Full-screen background image/video
+        - Hotel name + tagline
+        - "Book Now" CTA button
+        - Framer Motion entrance animation (fade + slide up)
+  [ ] Highlights section
+        - 3 or 4 feature cards (pool, restaurant, location, etc.)
+        - Scroll-triggered animations
+  [ ] Featured Rooms section
+        - Pull 3 rooms from API: GET /api/rooms/
+        - Display as cards with 3D hover effect
+  [ ] Testimonials / Gallery section
+
+Deliverable: Home page looks complete with animations.
+
+
+----------------------------------------
+ DAY 4 — ROOMS PAGE
+----------------------------------------
+Tasks:
+  [ ] Rooms.jsx — grid layout of all rooms
+        - Fetch all rooms: GET /api/rooms/
+        - Show loading skeleton while fetching
+        - Filter by room type (Suite, Apartment, Basic)
+  [ ] RoomCard.jsx component
+        - Room image, name, price per night, short description
+        - 3D hover effect (Framer Motion rotateY + scale)
+        - "View Details" button → links to /rooms/:id
+
+Deliverable: Rooms page shows all hotel rooms from the API.
+
+
+----------------------------------------
+ DAY 5 — ROOM DETAIL PAGE
+----------------------------------------
+Tasks:
+  [ ] RoomDetail.jsx
+        - Fetch single room: GET /api/rooms/:id/
+        - Full image gallery / carousel
+        - Room description, amenities list, price
+        - Inline booking form (check-in, check-out, guests)
+        - Submit booking: POST /api/bookings/
+        - Show success/error toast notification
+
+Deliverable: User can view a room and submit a booking.
+
+
+----------------------------------------
+ DAY 6 — AUTH PAGES (Login & Register)
+----------------------------------------
+Tasks:
+  [ ] Login.jsx
+        - Email + password form
+        - POST /api/auth/login/
+        - Save auth token/session
+        - Redirect to home on success
+  [ ] Register.jsx
+        - Name, email, password form
+        - POST /api/auth/register/
+  [ ] AuthContext.jsx
+        - Global auth state (user, login(), logout())
+        - Protect booking routes (must be logged in to book)
+
+Deliverable: Users can register, log in, and log out.
+
+
+----------------------------------------
+ DAY 7 — ABOUT & CONTACT PAGES
+----------------------------------------
+Tasks:
+  [ ] About.jsx
+        - Hotel story / history section
+        - Team or management section
+        - Amenities overview (pool, WiFi, restaurant, etc.)
+        - Animated image sections (Framer Motion scroll reveal)
+  [ ] Contact.jsx
+        - Contact form (name, email, message)
+        - POST /api/contact/ (if Victor builds this endpoint)
+        - Hotel address, phone, email
+        - Embedded Google Map (optional)
+
+Deliverable: Both pages complete and styled.
+
+
+----------------------------------------
+ DAY 8 — BOOKING CONFIRMATION & USER DASHBOARD
+----------------------------------------
+Tasks:
+  [ ] BookingConfirmation.jsx
+        - Show booking summary after successful booking
+        - Booking ID, room name, dates, total price
+  [ ] UserDashboard.jsx (optional but nice)
+        - GET /api/bookings/ (user's own bookings)
+        - List of past and upcoming bookings
+        - Cancel booking option
+
+Deliverable: User can see their booking after submission.
+
+
+----------------------------------------
+ DAY 9 — ADMIN DASHBOARD
+----------------------------------------
+Tasks:
+  [ ] AdminDashboard.jsx (protected, admin only)
+        - Overview: total bookings, available rooms, revenue
+  [ ] AdminRooms.jsx
+        - List all rooms
+        - Add / Edit / Delete room
+  [ ] AdminBookings.jsx
+        - List all bookings
+        - Update booking status (pending → confirmed → checked out)
+
+Deliverable: Admin can manage rooms and bookings from the UI.
+
+
+----------------------------------------
+ DAY 10 — POLISH & DEPLOYMENT PREP
+----------------------------------------
+Tasks:
+  [ ] Review all pages on mobile (test on small screens)
+  [ ] Fix any layout or animation bugs
+  [ ] Add page transitions (Framer Motion AnimatePresence)
+  [ ] Add loading states and empty states everywhere
+  [ ] Replace all dummy data with real API data
+  [ ] Set production .env (VITE_API_BASE_URL=https://your-api.com/api)
+  [ ] Build for production: npm run build
+  [ ] Deploy (Vercel / Netlify)
+
+Deliverable: Site is live and production-ready.
+
+
+========================================
+ PAGES SUMMARY
+========================================
+
+  Page               Route             Status
+  -----------------------------------------------
+  Home               /                 [ ] Not started
+  Rooms              /rooms            [ ] Not started
+  Room Detail        /rooms/:id        [ ] Not started
+  Login              /login            [ ] Not started
+  Register           /register         [ ] Not started
+  About              /about            [ ] Not started
+  Contact            /contact          [ ] Not started
+  Booking Confirm    /booking/confirm  [ ] Not started
+  User Dashboard     /dashboard        [ ] Not started
+  Admin Dashboard    /admin            [ ] Not started
+
+
+========================================
+ API CALLS I AM MAKING (from frontend)
+========================================
+
+  Method   Endpoint                 What it does
+  ----------------------------------------------------------
+  GET      /api/rooms/              Fetch all rooms
+  GET      /api/rooms/:id/          Fetch single room
+  POST     /api/bookings/           Submit a booking
+  GET      /api/bookings/           Get user's bookings
+  POST     /api/auth/register/      Register new user
+  POST     /api/auth/login/         Login user
+  POST     /api/auth/logout/        Logout user
+  GET      /api/admin/bookings/     Admin: all bookings
+  PUT      /api/admin/bookings/:id/ Admin: update status
+  POST     /api/rooms/              Admin: add room
+  PUT      /api/rooms/:id/          Admin: edit room
+  DELETE   /api/rooms/:id/          Admin: delete room
+
+
+========================================
+ NOTES FOR VICTOR (Backend Dev)
+========================================
+
+1. Please enable CORS for http://localhost:5173 from day one.
+   Install: pip install django-cors-headers
+   Add CORS_ALLOWED_ORIGINS = ["http://localhost:5173"] in settings.py
+
+2. All API responses should be JSON.
+
+3. For image fields (room photos), return a full URL so I can
+   display them directly in <img src={room.image} />.
+
+4. Auth — let me know if you're using:
+   - Token auth (DRF TokenAuthentication)
+   - JWT (djangorestframework-simplejwt)
+   - Session auth
+   So I know what to store on the frontend after login.
+
+5. Let me know when each endpoint is ready so I can swap
+   out dummy data with real API calls.
+
+========================================
