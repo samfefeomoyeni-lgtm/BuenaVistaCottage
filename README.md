@@ -1,6 +1,6 @@
 # Buena Vista Cottage — Hotel Website
 
-A modern, full-stack hotel website for **Buena Vista Cottage**, a boutique Nigerian hotel. Built with React (Vite) on the frontend and Django on the backend, featuring immersive 3D animations, room booking, and a clean admin experience.
+A modern, full-stack hotel platform for **Buena Vista Cottage**, a boutique Nigerian hotel. Built with React (Vite) on the frontend, React Native (Expo) for the mobile app, and Django on the backend, featuring immersive 3D animations, room booking, and a clean admin experience.
 
 ---
 
@@ -12,6 +12,7 @@ A modern, full-stack hotel website for **Buena Vista Cottage**, a boutique Niger
 - **Authentication** — Guest login/signup and admin access
 - **Fully Responsive** — Optimized for mobile, tablet, and desktop
 - **Admin Dashboard** — Manage rooms, bookings, and guests
+- **Mobile App** — React Native (Expo) app sharing the same Django API
 
 ---
 
@@ -34,6 +35,14 @@ A modern, full-stack hotel website for **Buena Vista Cottage**, a boutique Niger
 | Django REST Framework | API layer |
 | django-cors-headers | Cross-origin support |
 | PostgreSQL | Database |
+
+### Mobile
+| Tool | Purpose |
+|------|---------|
+| React Native + Expo | Mobile app framework |
+| React Navigation | Screen routing |
+| Axios | API communication (same Django API) |
+| Expo Go | Dev preview on physical device |
 
 ---
 
@@ -75,6 +84,21 @@ buena-vista-cottage/
     ├── users/                 # Auth app
     ├── manage.py
     └── requirements.txt
+
+mobile/                        # React Native + Expo app
+├── app/
+│   ├── screens/               # One file per screen
+│   │   ├── HomeScreen.jsx
+│   │   ├── RoomsScreen.jsx
+│   │   ├── RoomDetailScreen.jsx
+│   │   ├── BookingScreen.jsx
+│   │   └── ProfileScreen.jsx
+│   ├── components/            # Reusable mobile components
+│   ├── services/              # Same API calls as web
+│   │   └── api.js
+│   └── context/               # Auth context
+├── app.json
+└── package.json
 ```
 
 ---
@@ -138,6 +162,25 @@ API runs at **http://localhost:8000/api**
 
 ---
 
+### Mobile Setup
+
+```bash
+# Navigate to mobile
+cd mobile
+
+# Install dependencies
+npm install
+
+# Start Expo dev server
+npx expo start
+```
+
+Scan the QR code with the **Expo Go** app on your phone to preview instantly.
+
+The mobile app connects to the same Django API — just make sure the backend is running and update `api.js` with your local IP address instead of `localhost` (e.g. `http://192.168.x.x:8000/api`) so your phone can reach it.
+
+---
+
 ## API Endpoints
 
 | Method | Endpoint | Description |
@@ -187,7 +230,8 @@ CORS_ALLOWED_ORIGINS=http://localhost:5173
 
 | Role | Name | Responsibility |
 |------|------|---------------|
-| Frontend | Samuel | React UI, animations, routing |
+| Frontend (Web) | Samuel | React UI, animations, routing |
+| Mobile | Samuel | React Native screens, Expo setup |
 | Backend | Victor | Django API, database, auth |
 
 ---

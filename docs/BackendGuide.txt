@@ -6,6 +6,8 @@
 
 This file tracks what the backend is building day by day,
 what each endpoint does, and how it connects to Samuel's frontend.
+NOTE: The same API serves both the web app and the mobile app.
+No extra endpoints are needed — mobile just consumes the same ones.
 
 ----------------------------------------
  WHAT THE BACKEND IS RESPONSIBLE FOR
@@ -267,4 +269,9 @@ Deliverable: API is live and accessible to the deployed frontend.
 5. Keep requirements.txt up to date:
    pip freeze > requirements.txt
 
-========================================
+6. Mobile app note — Samuel's React Native app will also hit the
+   same API from a physical device. Make sure CORS and ALLOWED_HOSTS
+   include the local network IP (e.g. 192.168.x.x) during development,
+   not just localhost, so the phone can reach the Django server.
+
+========================================    

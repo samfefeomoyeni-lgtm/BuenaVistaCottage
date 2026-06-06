@@ -2,10 +2,13 @@
    BUENA VISTA COTTAGE — FRONTEND PLAN
    Developer: Samuel
    Stack: React + Vite, Framer Motion, Axios
+          React Native + Expo (mobile)
 ========================================
 
 This file tracks what the frontend is building day by day,
 what each page does, and how it connects to the backend.
+Both the web app and mobile app are handled by Samuel and
+share the same Django API Victor is building.
 
 ----------------------------------------
  WHAT THE FRONTEND IS RESPONSIBLE FOR
@@ -17,6 +20,7 @@ what each page does, and how it connects to the backend.
 - Sending and receiving data from Victor's Django API (Axios)
 - Handling user auth state (login/logout/session)
 - Making the site fully responsive (mobile + desktop)
+- Mobile app screens using React Native + Expo (after web is done)
 
 
 ========================================
@@ -192,6 +196,99 @@ Deliverable: Site is live and production-ready.
 
 
 ========================================
+ MOBILE APP BUILD PLAN (After Web is Done)
+ Stack: React Native + Expo
+========================================
+
+----------------------------------------
+ MOBILE DAY 1 — SETUP
+----------------------------------------
+Tasks:
+  [ ] Scaffold mobile app:
+        npx create-expo-app mobile
+        cd mobile
+  [ ] Install dependencies:
+        npm install axios @react-navigation/native @react-navigation/stack
+        npx expo install react-native-screens react-native-safe-area-context
+  [ ] Set up folder structure (screens/, components/, services/, context/)
+  [ ] Copy src/services/api.js from web — update baseURL to use
+      your local IP (e.g. http://192.168.x.x:8000/api) not localhost
+  [ ] Test app runs in Expo Go on your phone
+
+Deliverable: Blank app opens on phone via Expo Go.
+
+
+----------------------------------------
+ MOBILE DAY 2 — NAVIGATION & AUTH SCREENS
+----------------------------------------
+Tasks:
+  [ ] Set up React Navigation stack
+  [ ] LoginScreen.jsx — email + password, POST /api/auth/login/
+  [ ] RegisterScreen.jsx — name, email, password, POST /api/auth/register/
+  [ ] Store auth token with AsyncStorage or SecureStore
+  [ ] Protect screens that require login
+
+Deliverable: User can log in and out on the mobile app.
+
+
+----------------------------------------
+ MOBILE DAY 3 — HOME & ROOMS SCREENS
+----------------------------------------
+Tasks:
+  [ ] HomeScreen.jsx
+        - Welcome banner with hotel name
+        - Featured rooms (GET /api/rooms/)
+        - Book Now button
+  [ ] RoomsScreen.jsx
+        - Full list of rooms
+        - Filter by type (Suite, Apartment, Basic)
+        - Tap a room → go to RoomDetailScreen
+
+Deliverable: User can browse rooms on mobile.
+
+
+----------------------------------------
+ MOBILE DAY 4 — ROOM DETAIL & BOOKING
+----------------------------------------
+Tasks:
+  [ ] RoomDetailScreen.jsx
+        - Room image, name, price, description, amenities
+        - Date picker for check-in / check-out
+        - Guest count selector
+        - Submit booking: POST /api/bookings/
+        - Show success/error alert
+
+Deliverable: User can book a room from the mobile app.
+
+
+----------------------------------------
+ MOBILE DAY 5 — PROFILE & MY BOOKINGS
+----------------------------------------
+Tasks:
+  [ ] ProfileScreen.jsx
+        - Show logged-in user info
+        - Logout button
+  [ ] MyBookingsScreen.jsx
+        - GET /api/bookings/ — list user's bookings
+        - Show status (pending / confirmed / checked out)
+
+Deliverable: User can view their bookings and manage profile.
+
+
+----------------------------------------
+ MOBILE DAY 6 — POLISH & PUBLISH
+----------------------------------------
+Tasks:
+  [ ] Test on both Android and iOS (Expo Go handles both)
+  [ ] Handle loading and error states on every screen
+  [ ] Add splash screen and app icon (app.json)
+  [ ] Update API base URL to production backend URL
+  [ ] Build for release: npx expo build or EAS Build
+
+Deliverable: Mobile app is polished and ready for distribution.
+
+
+========================================
  PAGES SUMMARY
 ========================================
 
@@ -207,6 +304,22 @@ Deliverable: Site is live and production-ready.
   Booking Confirm    /booking/confirm  [ ] Not started
   User Dashboard     /dashboard        [ ] Not started
   Admin Dashboard    /admin            [ ] Not started
+
+
+----------------------------------------
+ MOBILE SCREENS SUMMARY
+----------------------------------------
+
+  Screen             Stack Route         Status
+  -----------------------------------------------
+  Login              LoginScreen        [ ] Not started
+  Register           RegisterScreen     [ ] Not started
+  Home               HomeScreen         [ ] Not started
+  Rooms              RoomsScreen        [ ] Not started
+  Room Detail        RoomDetailScreen   [ ] Not started
+  Booking            BookingScreen      [ ] Not started
+  My Bookings        MyBookingsScreen   [ ] Not started
+  Profile            ProfileScreen      [ ] Not started
 
 
 ========================================
